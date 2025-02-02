@@ -1,58 +1,6 @@
-import streamlit as st
-
-# Initialize game state if not already present in session_state
-if "game_state" not in st.session_state:
-    st.session_state["game_state"] = {
-        "budget": 1000,  # Starting budget
-        "approval": 50,  # Starting public approval rating
-        "turns": 1,  # Turn counter
-        "policy_history": []  # List to track policy changes
-    }
-
-# Access the game state
-game_state = st.session_state["game_state"]
-
-# Display turn counter
-st.subheader(f"Turn: {game_state['turns']}")
-
-# Allow the user to select and apply policies
-policy = st.selectbox(
-    "Choose a policy to adjust:",
-    ["Income Tax", "Healthcare Funding", "Police Funding", "Welfare Spending"]
-)
-
-intensity = st.slider("Select policy intensity", 0, 10, 5)
-
-# Apply Policy Button
-if st.button("Apply Policy"):
-    # Append policy decision to history
-    game_state["policy_history"].append({"policy": policy, "intensity": intensity})
-    
-    # Modify budget and approval rating based on the policy
-    if policy == "Income Tax":
-        game_state["budget"] += intensity * 10  # Increase budget
-        game_state["approval"] -= intensity * 2  # Decrease approval
-    elif policy == "Healthcare Funding":
-        game_state["budget"] -= intensity * 15  # Reduce budget
-        game_state["approval"] += intensity * 3  # Increase approval
-    elif policy == "Police Funding":
-        game_state["budget"] -= intensity * 10  # Reduce budget
-        game_state["approval"] += intensity * 2  # Slight approval increase
-    elif policy == "Welfare Spending":
-        game_state["budget"] -= intensity * 20  # Reduce budget more
-        game_state["approval"] += intensity * 4  # Increase approval significantly
-
-# Display game state values
-st.write(f"Updated Budget: {game_state['budget']}")
-st.write(f"Public Approval: {game_state['approval']}")
-
-# Show Policy History
-if game_state["policy_history"]:
-    st.subheader("Policy History")
-    for entry in game_state["policy_history"]:
-        st.write(f"Policy: {entry['policy']}, Intensity: {entry['intensity']}")
-
-# Next Turn Button
-if st.button("Next Turn"):
-    game_state["turns"] += 1  # Increment turn counter
-    st.rerun()  # Refresh the app state
+{
+    "budget": 1000,
+    "approval": 50,
+    "turns": 1,
+    "policy_history": []
+}
