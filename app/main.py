@@ -50,7 +50,7 @@ if game_state["policy_history"]:
 
 # Display budget and public approval
 st.write(f"Updated Budget: {game_state['budget']}")
-st.write(f"Public Approval: {game_state['public_approval']}")
+st.write(f"Public Approval: {game_state['approval']}")
 
 # Next Turn Button
 if st.button("Next Turn"):
