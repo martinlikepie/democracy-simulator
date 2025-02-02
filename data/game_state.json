@@ -11,5 +11,11 @@
     "Workers": 50,
     "Environmentalists": 50
   },
-  "event_history": []
+  "event_history": [],
+  "effects": {
+    "Income Tax": {"budget": 10, "public_approval": -1, "gdp": -2},
+    "Healthcare Funding": {"budget": -15, "public_approval": 1, "unemployment": -1},
+    "Police Funding": {"budget": -10, "public_approval": -5, "crime_rate": -1},
+    "Welfare Spending": {"budget": -20, "public_approval": 5, "unemployment": 1}
+  }
 }
