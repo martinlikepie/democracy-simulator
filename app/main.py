@@ -49,11 +49,13 @@ if st.button("Apply Policy", key="apply_policy_button"):
     cost = policies[policy]["cost"]
     approval = policies[policy]["approval"]
 
-    # Adjust game state
+    # Adjust budget
     game_state["budget"] -= intensity * cost
+
+    # Adjust public approval
     game_state["public_approval"] += intensity * approval
 
-    # Ensure values stay within reasonable bounds
+    # Ensure values stay within bounds
     game_state["budget"] = max(0, game_state["budget"])
     game_state["public_approval"] = min(100, max(0, game_state["public_approval"]))
 
@@ -61,5 +63,10 @@ if st.button("Apply Policy", key="apply_policy_button"):
     with open(game_state_file, "w") as file:
         json.dump(game_state, file)
 
+    # Debugging messages (REMOVE after testing)
+    st.write(f"Policy applied: {policy}")
+    st.write(f"Intensity: {intensity}")
+    st.write(f"Cost per unit: {cost}")
+    st.write(f"Approval impact per unit: {approval}")
     st.write(f"Updated Budget: {game_state['budget']}")
-    st.write(f"Public Approval: {game_state['public_approval']}")
+    st.write(f"Updated Public Approval: {game_state['public_approval']}")
