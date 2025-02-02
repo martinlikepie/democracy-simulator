@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import os
-import random
+from utils import trigger_random_event  # ✅ Now using the external utils module
 
 game_state_file = "data/game_state.json"
 
@@ -16,7 +16,8 @@ def load_game_state():
     defaults = {
         "budget": 1000, "public_approval": 50, "turns": 1, "policy_history": [],
         "gdp": 100, "unemployment": 5, "crime_rate": 10,
-        "citizen_groups": {"Business Owners": 50, "Workers": 50, "Environmentalists": 50}
+        "citizen_groups": {"Business Owners": 50, "Workers": 50, "Environmentalists": 50},
+        "event_history": []  # ✅ Ensure event history exists
     }
 
     for key, value in defaults.items():
@@ -25,32 +26,9 @@ def load_game_state():
 
     return game_state
 
-
 def save_game_state(state):
     with open(game_state_file, "w") as file:
         json.dump(state, file)
-
-def trigger_random_event(game_state):
-    events = [
-        {"name": "Economic Boom", "gdp": 10, "public_approval": 5},
-        {"name": "Recession", "gdp": -10, "public_approval": -5},
-        {"name": "Scientific Breakthrough", "public_approval": 10},
-        {"name": "Corruption Scandal", "public_approval": -10},
-        {"name": "Natural Disaster", "budget": -50, "public_approval": -5},
-    ]
-
-    if "event_history" not in game_state:
-        game_state["event_history"] = []  # Initialize event history if missing
-
-    if random.random() < 0.3:  # 30% chance of an event happening
-        event = random.choice(events)
-        for key, value in event.items():
-            if key != "name":  # Don't try to add "name" to the numbers
-                game_state[key] += value
-
-        game_state["event_history"].append(event["name"])
-        return event["name"]
-    return None
 
 def apply_policy(game_state, policy, intensity):
     effects = {
@@ -108,9 +86,17 @@ st.write(f"GDP: {game_state['gdp']}")
 st.write(f"Unemployment Rate: {game_state['unemployment']}%")
 st.write(f"Crime Rate: {game_state['crime_rate']}")
 
+# ✅ **Display Event History**
+st.subheader("Event History")
+if "event_history" in game_state and game_state["event_history"]:
+    for event in game_state["event_history"][-5:]:  # Show last 5 events
+        st.write(f"📌 {event}")
+else:
+    st.write("No major events have occurred yet.")
+
 if st.button("Next Turn"):
     game_state["turns"] += 1
-    random_event = trigger_random_event(game_state)  # Trigger a random event
+    random_event = trigger_random_event(game_state)  # ✅ Trigger a random event
     save_game_state(game_state)
     check_game_status(game_state)
     st.rerun()
