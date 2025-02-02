@@ -1,6 +1,7 @@
-{
-    "budget": 1000,
-    "public_approval": 50,
-    "economic_growth": 1.0,
-    "turns": 1
-}
+if "game_state" not in st.session_state:
+    st.session_state["game_state"] = {
+        "budget": 1000,
+        "approval": 50,
+        "turns": 1,
+        "policy_history": []  # Initialize an empty list for policy history
+    }
