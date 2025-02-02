@@ -1,4 +1,6 @@
 {
     "budget": 1000,
-    "public_approval": 50
+    "public_approval": 50,
+    "economic_growth": 1.0,
+    "turns": 1
 }
