@@ -34,7 +34,8 @@ intensity = st.slider("Select policy intensity", 0, 10, 5)
 if st.button("Apply Policy"):
     # Adjust budget and approval based on policy changes
     game_state["budget"] -= intensity * 10
-    game_state["public_approval"] += intensity - 5  # Slightly favoring higher intensity
+    game_state["approval"] += intensity - 5
+ # Slightly favoring higher intensity
     
     # Save policy decision to history
     game_state["policy_history"].append({"policy": policy, "intensity": intensity})
