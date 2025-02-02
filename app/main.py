@@ -5,6 +5,10 @@ import json
 with open("data/policies.json", "r") as file:
     policies = json.load(file)
 
+# Load game state
+with open("data/game_state.json", "r") as file:
+    game_state = json.load(file)
+
 # Title
 st.title("Democracy Simulator")
 st.write("Welcome to the interactive democracy simulation.")
@@ -15,16 +19,8 @@ policy = st.selectbox("Choose a policy to adjust:", list(policies.keys()))
 # Policy Intensity
 intensity = st.slider("Select policy intensity", 0, 10, 5)
 
-# Apply Policy Button
-if st.button("Apply Policy"):
-    st.write(f"You selected **{policy}** with intensity level **{intensity}!**")
-
-# Load game state
-with open("data/game_state.json", "r") as file:
-    game_state = json.load(file)
-
-# Adjust economy based on policy
-if st.button("Apply Policy"):
+# Apply Policy Button - Ensure this is not duplicated
+if st.button("Apply Policy", key="apply_policy_button"):
     game_state["budget"] -= intensity * 10
     game_state["public_approval"] += intensity * 2
 
