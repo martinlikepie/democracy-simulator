@@ -8,8 +8,21 @@ game_state_file = "data/game_state.json"
 def load_game_state():
     if os.path.exists(game_state_file):
         with open(game_state_file, "r") as file:
-            return json.load(file)
-    return {"budget": 1000, "public_approval": 50, "turns": 1, "policy_history": [], "event_history": []}
+            state = json.load(file)
+            # Ensure all required keys exist
+            if "public_approval" not in state:
+                state["public_approval"] = 50
+            if "budget" not in state:
+                state["budget"] = 1000
+            if "turns" not in state:
+                state["turns"] = 1
+            if "policy_history" not in state:
+                state["policy_history"] = []
+            return state
+
+    # Default if file doesn't exist
+    return {"budget": 1000, "public_approval": 50, "turns": 1, "policy_history": []}
+
 
 def save_game_state(state):
     with open(game_state_file, "w") as file:
