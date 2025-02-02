@@ -1,6 +1,4 @@
-
 {
-    "economy": 50,
-    "public_approval": 50,
-    "budget": 1000
+    "budget": 1000,
+    "public_approval": 50
 }
