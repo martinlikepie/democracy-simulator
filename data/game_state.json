@@ -2,5 +2,6 @@
     "budget": 1000,
     "approval": 50,
     "turns": 1,
-    "policy_history": []
+    "policy_history": [],
+    "event_history": []
 }
