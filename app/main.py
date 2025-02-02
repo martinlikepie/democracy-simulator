@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import os
-from utils.utils import trigger_random_event
+from utils import trigger_random_event
 
 game_state_file = "data/game_state.json"
 
