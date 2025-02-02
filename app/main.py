@@ -45,6 +45,19 @@ st.write("Welcome to the interactive democracy simulation.")
 game_state = load_game_state()
 
 st.subheader(f"Turn: {game_state['turns']}")
+# Load effects from game_state.json
+game_state_file = "data/game_state.json"
+
+if os.path.exists(game_state_file):
+    with open(game_state_file, "r") as file:
+        game_data = json.load(file)
+        effects = game_data.get("effects", {})  # Ensure effects is always a dictionary
+else:
+    effects = {}  # Default to empty dictionary if file doesn't exist
+
+# Now use effects.keys() safely
+policy = st.selectbox("Choose a policy to adjust:", list(effects.keys()) if effects else ["No Policies Available"])
+
 policy = st.selectbox("Choose a policy to adjust:", list(effects.keys()))
 intensity = st.slider("Select policy intensity", 0, 10, 5)
 
