@@ -1,12 +1,15 @@
 {
-    "budget": 1000,
-    "public_approval": 50,
-    "turns": 1,
-    "policy_history": [],
-    "effects": {
-        "Income Tax": {"budget": 10, "public_approval": -2},
-        "Healthcare Funding": {"budget": -15, "public_approval": 3},
-        "Police Funding": {"budget": -10, "public_approval": 2},
-        "Welfare Spending": {"budget": -12, "public_approval": 4}
-    }
+  "budget": 1000,
+  "public_approval": 50,
+  "turns": 1,
+  "policy_history": [],
+  "gdp": 100,
+  "unemployment": 5,
+  "crime_rate": 10,
+  "citizen_groups": {
+    "Business Owners": 50,
+    "Workers": 50,
+    "Environmentalists": 50
+  },
+  "event_history": []
 }
