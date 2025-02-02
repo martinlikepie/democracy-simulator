@@ -1,7 +1,6 @@
-
 {
-    "Income Tax": "Adjust tax rates to increase or decrease government revenue.",
-    "Healthcare Funding": "Increase or decrease healthcare budget, affecting public health.",
-    "Police Funding": "Adjust funding for law enforcement.",
-    "Welfare Spending": "Change welfare support for low-income citizens."
+    "Income Tax": {"cost": 10, "approval": 5},
+    "Healthcare Funding": {"cost": 15, "approval": 8},
+    "Police Funding": {"cost": 12, "approval": 6},
+    "Welfare Spending": {"cost": 14, "approval": 7}
 }
