@@ -1,7 +1,14 @@
 {
-    "budget": 1000,
-    "approval": 50,
-    "turns": 1,
-    "policy_history": [],
-    "event_history": []
+  "budget": 1000,
+  "public_approval": 50,
+  "turns": 1,
+  "policy_history": [],
+  "gdp": 100, 
+  "unemployment": 5,
+  "crime_rate": 10,
+  "citizen_groups": {
+    "Business Owners": 50,
+    "Workers": 50,
+    "Environmentalists": 50
+  }
 }
