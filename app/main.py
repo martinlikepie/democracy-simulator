@@ -1,7 +1,12 @@
 import streamlit as st
 import json
 import os
-from utils import trigger_random_event
+import sys
+
+# Ensure Python can find the `utils` module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from utils.utils import trigger_random_event  # Import after fixing path
 
 game_state_file = "data/game_state.json"
 
